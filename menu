@@ -5,17 +5,16 @@
 # ===============================
 
 # -------------------------------
-# Pterodactyl Menu
+# Pterodactyl GitHub Menu
 # -------------------------------
-pterodactyl_menu() {
-    source=$1
+pterodactyl_github() {
     while true; do
         clear
         echo "==============================="
-        echo " 🐦 Pterodactyl Installer ($source)"
+        echo " 🐦 Pterodactyl (GitHub)"
         echo "==============================="
         echo "1) Install Panel"
-        echo "2) Install Wings (Node)"
+        echo "2) Install Wings"
         echo "3) Setup 24/7"
         echo "4) Setup Cloudflare Tunnel"
         echo "0) Back"
@@ -33,22 +32,22 @@ pterodactyl_menu() {
 }
 
 # -------------------------------
-# Skyport Menu
+# Skyport GitHub Menu
 # -------------------------------
-skyport_menu() {
-    source=$1
+skyport_github() {
     while true; do
         clear
         echo "==============================="
-        echo " 🚀 Skyport Installer ($source)"
+        echo " 🚀 Skyport (GitHub)"
         echo "==============================="
         echo "1) Install Skyport Panel"
         echo "2) Install Skyport Node"
         echo "3) Setup 24/7"
+        echo "4) Setup Cloudflare Tunnel"
         echo "0) Back"
         read -p "Choose an option: " choice
 
-        case $choice in
+       case $choice in
             1) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/skyport-panel/main/panel.sh) ;;
             2) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/skyport-panel/main/node.sh) ;;
             3) python3 <(curl -s https://raw.githubusercontent.com/Subhanplays/24-7/main/24-7.py) ;;
@@ -59,14 +58,67 @@ skyport_menu() {
 }
 
 # -------------------------------
-# PufferPanel Menu
+# Pterodactyl CodeSandbox Menu
 # -------------------------------
-pufferpanel_menu() {
-    source=$1
+pterodactyl_codesandbox() {
     while true; do
         clear
         echo "==============================="
-        echo " 🐡 PufferPanel Installer ($source)"
+        echo " 🐦 Pterodactyl (CodeSandbox)"
+        echo "==============================="
+        echo "1) Install Panel"
+        echo "2) Install Wings"
+        echo "3) Setup 24/7"
+        echo "4) Setup Cloudflare Tunnel"
+        echo "0) Back"
+        read -p "Choose an option: " choice
+
+        case $choice in
+            1) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/codesendbox-ptero/main/install) ;;
+            2) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/codesendbox-ptero/main/wings) ;;
+            3) python3 <(curl -s https://raw.githubusercontent.com/Subhanplays/24-7/main/24-7.py) ;;
+            4) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Cloudflare-Tunnel/main/pterodactyl.sh) ;;
+            0) break ;;
+            *) echo "❌ Invalid option"; sleep 1 ;;
+        esac
+    done
+}
+
+# -------------------------------
+# Skyport CodeSandbox Menu
+# -------------------------------
+skyport_codesandbox() {
+    while true; do
+        clear
+        echo "==============================="
+        echo " 🚀 Skyport (CodeSandbox)"
+        echo "==============================="
+        echo "1) Install Skyport Panel"
+        echo "2) Install Skyport Node"
+        echo "3) Setup 24/7"
+        echo "4) Setup Cloudflare Tunnel"
+        echo "0) Back"
+        read -p "Choose an option: " choice
+
+        case $choice in
+            1) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Skyport/main/panel.sh) ;;
+            2) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Skyport/main/node.sh) ;;
+            3) python3 <(curl -s https://raw.githubusercontent.com/Subhanplays/24-7/main/24-7.py) ;;
+            4) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Cloudflare-Tunnel/main/skyport.sh) ;;
+            0) break ;;
+            *) echo "❌ Invalid option"; sleep 1 ;;
+        esac
+    done
+}
+
+# -------------------------------
+# PufferPanel CodeSandbox Menu
+# -------------------------------
+pufferpanel_codesandbox() {
+    while true; do
+        clear
+        echo "==============================="
+        echo " 🐡 PufferPanel (CodeSandbox)"
         echo "==============================="
         echo "1) Install PufferPanel"
         echo "2) Create Admin User"
@@ -107,30 +159,47 @@ while true; do
     read -p "Choose an option: " main_choice
 
     case $main_choice in
-        1) source="GitHub" ;;
-        2) source="CodeSandbox" ;;
+        1)  # GitHub
+            while true; do
+                clear
+                echo "==============================="
+                echo " 📂 Select Panel (GitHub)"
+                echo "==============================="
+                echo "1) Pterodactyl"
+                echo "2) Skyport"
+                echo "0) Back"
+                read -p "Choose an option: " panel_choice
+
+                case $panel_choice in
+                    1) pterodactyl_github ;;
+                    2) skyport_github ;;
+                    0) break ;;
+                    *) echo "❌ Invalid option"; sleep 1 ;;
+                esac
+            done
+            ;;
+        2)  # CodeSandbox
+            while true; do
+                clear
+                echo "==============================="
+                echo " 📂 Select Panel (CodeSandbox)"
+                echo "==============================="
+                echo "1) Pterodactyl"
+                echo "2) Skyport"
+                echo "3) PufferPanel"
+                echo "0) Back"
+                read -p "Choose an option: " panel_choice
+
+                case $panel_choice in
+                    1) pterodactyl_codesandbox ;;
+                    2) skyport_codesandbox ;;
+                    3) pufferpanel_codesandbox ;;
+                    0) break ;;
+                    *) echo "❌ Invalid option"; sleep 1 ;;
+                esac
+            done
+            ;;
         0) echo "👋 Exiting..."; exit 0 ;;
-        *) echo "❌ Invalid option"; sleep 1; continue ;;
+        *) echo "❌ Invalid option"; sleep 1 ;;
     esac
-
-    # Panel selection after choosing source
-    while true; do
-        clear
-        echo "==============================="
-        echo " 📂 Select Panel ($source)"
-        echo "==============================="
-        echo "1) Pterodactyl"
-        echo "2) Skyport"
-        echo "3) PufferPanel"
-        echo "0) Back"
-        read -p "Choose an option: " panel_choice
-
-        case $panel_choice in
-            1) pterodactyl_menu "$source" ;;
-            2) skyport_menu "$source" ;;
-            3) pufferpanel_menu "$source" ;;
-            0) break ;;
-            *) echo "❌ Invalid option"; sleep 1 ;;
-        esac
-    done
 done
