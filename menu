@@ -16,7 +16,6 @@ pterodactyl_github() {
         echo "1) Install Panel"
         echo "2) Install Wings"
         echo "3) Setup 24/7"
-        echo "4) Setup Cloudflare Tunnel"
         echo "0) Back"
         read -p "Choose an option: " choice
 
@@ -24,7 +23,6 @@ pterodactyl_github() {
             1) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Pterodacrtyl-panel/main/panel) ;;
             2) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Pterodacrtyl-panel/main/wings) ;;
             3) python3 <(curl -s https://raw.githubusercontent.com/Subhanplays/24-7/main/24-7.py) ;;
-            4) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Cloudflare-Tunnel/main/pterodactyl.sh) ;;
             0) break ;;
             *) echo "❌ Invalid option"; sleep 1 ;;
         esac
@@ -43,7 +41,6 @@ skyport_github() {
         echo "1) Install Skyport Panel"
         echo "2) Install Skyport Node"
         echo "3) Setup 24/7"
-        echo "4) Setup Cloudflare Tunnel"
         echo "0) Back"
         read -p "Choose an option: " choice
 
@@ -69,7 +66,6 @@ pterodactyl_codesandbox() {
         echo "1) Install Panel"
         echo "2) Install Wings"
         echo "3) Setup 24/7"
-        echo "4) Setup Cloudflare Tunnel"
         echo "0) Back"
         read -p "Choose an option: " choice
 
@@ -77,7 +73,6 @@ pterodactyl_codesandbox() {
             1) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/codesendbox-ptero/main/install) ;;
             2) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/codesendbox-ptero/main/wings) ;;
             3) python3 <(curl -s https://raw.githubusercontent.com/Subhanplays/24-7/main/24-7.py) ;;
-            4) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Cloudflare-Tunnel/main/pterodactyl.sh) ;;
             0) break ;;
             *) echo "❌ Invalid option"; sleep 1 ;;
         esac
@@ -96,7 +91,6 @@ skyport_codesandbox() {
         echo "1) Install Skyport Panel"
         echo "2) Install Skyport Node"
         echo "3) Setup 24/7"
-        echo "4) Setup Cloudflare Tunnel"
         echo "0) Back"
         read -p "Choose an option: " choice
 
@@ -104,7 +98,6 @@ skyport_codesandbox() {
             1) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Skyport/main/panel.sh) ;;
             2) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Skyport/main/node.sh) ;;
             3) python3 <(curl -s https://raw.githubusercontent.com/Subhanplays/24-7/main/24-7.py) ;;
-            4) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Cloudflare-Tunnel/main/skyport.sh) ;;
             0) break ;;
             *) echo "❌ Invalid option"; sleep 1 ;;
         esac
