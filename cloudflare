@@ -17,13 +17,12 @@ sudo mv cloudflared /usr/local/bin/
 echo "🌐 Logging in to Cloudflare..."
 cloudflared tunnel login
 
-# Step 4: Create the tunnel
-echo "🔧 Creating tunnel '$TUNNEL_NAME'..."
-TUNNEL_ID=$(cloudflared tunnel create "$TUNNEL_NAME" | awk '/id/{print $2}')
+# Create the tunnel and capture the real tunnel ID
+TUNNEL_ID=$(cloudflared tunnel create "$TUNNEL_NAME" | awk '/^Created tunnel/{getline; print $1}')
+
 echo "Tunnel ID: $TUNNEL_ID"
 
-# Step 5: Generate config.yml
-echo "📝 Generating config file..."
+# Generate config.yml with correct credentials path
 CONFIG_PATH="$HOME/.cloudflared/config.yml"
 mkdir -p "$(dirname "$CONFIG_PATH")"
 cat <<EOF > "$CONFIG_PATH"
@@ -35,6 +34,7 @@ ingress:
     service: http://localhost:$LOCAL_PORT
   - service: http_status:404
 EOF
+
 
 # Step 6: Route DNS
 echo "🌍 Routing DNS..."
