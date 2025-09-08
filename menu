@@ -24,7 +24,7 @@ pterodactyl_menu() {
         case $choice in
             1) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Pterodacrtyl-panel/main/panel) ;;
             2) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Pterodacrtyl-panel/main/wings) ;;
-            3) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/KeepAlive/main/pterodactyl.sh) ;;
+            3) python3 <(curl -s https://raw.githubusercontent.com/Subhanplays/24-7/main/24-7.py) ;;
             4) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Cloudflare-Tunnel/main/pterodactyl.sh) ;;
             0) break ;;
             *) echo "❌ Invalid option"; sleep 1 ;;
@@ -45,15 +45,13 @@ skyport_menu() {
         echo "1) Install Skyport Panel"
         echo "2) Install Skyport Node"
         echo "3) Setup 24/7"
-        echo "4) Setup Cloudflare Tunnel"
         echo "0) Back"
         read -p "Choose an option: " choice
 
         case $choice in
-            1) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Skyport/main/panel.sh) ;;
-            2) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Skyport/main/node.sh) ;;
-            3) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/KeepAlive/main/skyport.sh) ;;
-            4) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Cloudflare-Tunnel/main/skyport.sh) ;;
+            1) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/skyport-panel/main/panel.sh) ;;
+            2) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/skyport-panel/main/node.sh) ;;
+            3) python3 <(curl -s https://raw.githubusercontent.com/Subhanplays/24-7/main/24-7.py) ;;
             0) break ;;
             *) echo "❌ Invalid option"; sleep 1 ;;
         esac
@@ -71,17 +69,24 @@ pufferpanel_menu() {
         echo " 🐡 PufferPanel Installer ($source)"
         echo "==============================="
         echo "1) Install PufferPanel"
-        echo "2) Install Agent"
-        echo "3) Setup 24/7"
-        echo "4) Setup Cloudflare Tunnel"
+        echo "2) Create Admin User"
+        echo "3) Enable & Start Service"
         echo "0) Back"
         read -p "Choose an option: " choice
 
         case $choice in
-            1) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/PufferPanel/main/panel.sh) ;;
-            2) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/PufferPanel/main/agent.sh) ;;
-            3) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/KeepAlive/main/pufferpanel.sh) ;;
-            4) bash <(curl -s https://raw.githubusercontent.com/Subhanplays/Cloudflare-Tunnel/main/pufferpanel.sh) ;;
+            1) 
+                echo "👉 Installing PufferPanel..."
+                bash <(curl -s https://raw.githubusercontent.com/subhanplays/hostingsetups/main/puffer-panel-install)
+                ;;
+            2) 
+                echo "👉 Creating PufferPanel Admin User..."
+                sudo pufferpanel user add
+                ;;
+            3) 
+                echo "👉 Enabling & Starting PufferPanel Service..."
+                sudo systemctl enable --now pufferpanel
+                ;;
             0) break ;;
             *) echo "❌ Invalid option"; sleep 1 ;;
         esac
