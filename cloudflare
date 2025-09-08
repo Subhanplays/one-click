@@ -17,8 +17,9 @@ sudo mv cloudflared /usr/local/bin/
 echo "🌐 Logging in to Cloudflare..."
 cloudflared tunnel login
 
-# Create the tunnel and capture the real tunnel ID
-TUNNEL_ID=$(cloudflared tunnel create "$TUNNEL_NAME" | awk '/^Created tunnel/{getline; print $1}')
+# Create tunnel and get ID in JSON
+TUNNEL_JSON=$(cloudflared tunnel create "$TUNNEL_NAME" --output json)
+TUNNEL_ID=$(echo "$TUNNEL_JSON" | jq -r '.Tunnel.ID')
 
 echo "Tunnel ID: $TUNNEL_ID"
 
